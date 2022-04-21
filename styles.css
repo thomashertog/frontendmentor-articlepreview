@@ -68,35 +68,33 @@ footer{
 
 footer{
     display: grid;
-    grid-template-columns: 3rem 1fr 3rem;
+    grid-template-areas: ". image author      share ."
+                         ". image publication share .";
+    grid-template-columns: 1rem 3rem 1fr 3rem 1rem;
     grid-template-rows: auto auto;
-    margin-inline: 2rem;
     column-gap: 1rem;
-    margin-block-end: 1rem;
+    padding-block-end: 1rem;
+    position: relative;
 }
 
-footer :is(img, button){
+.profile{
+    grid-area: image;
     order: -1;
-    grid-row: span 2;
-}
-
-footer > img{
     border-radius: 50%;
 }
 
 footer button{
-    grid-column: 3;
     border-radius: 50%;
+    grid-area: share;
 }
 
 .author{
-    grid-row: 1;
-    grid-column: 2;
+    grid-area: author;
     font-weight: bold;
 }
 
 .publication-date{
-    grid-column: 2;
+    grid-area: publication;
 }
 
 footer button[aria-expanded]{
@@ -112,6 +110,11 @@ footer button[aria-expanded]{
 footer button[aria-expanded="true"]{
     background-color: var(--grayish-blue);
     color: var(--light-grayish-blue);
+}
+
+.share-container{
+    display: contents;
+    position: relative;
 }
 
 .share-links{
@@ -159,15 +162,26 @@ footer button[aria-expanded="true"]{
 
     footer{
         grid-area: footer;
-        margin-block-end: 2rem;
+        /* margin-block-end: 2rem; */
+    }
+
+    footer button[aria-expanded]{
+        place-self: initial;
     }
 
     .share-links{
         right: 0;
-        width: 60%;
         padding: 2rem;
-        min-height: 7rem;
+        /* min-height: 7rem; */
     }
+}
+
+.share-links-hidden{
+    display: none;
+}
+
+.info-container{
+    display: contents;
 }
 
 @media screen and (min-width: 960px) {
@@ -176,10 +190,24 @@ footer button[aria-expanded="true"]{
     }
 
     .share-links{
-        width: fit-content;
+        --width: 22.5ch;
+        --margin: 2rem;
+        --button-width: 2.5rem;
+        max-width: var(--width);
         padding: .5rem;
         min-height: fit-content;
-        position: relative;
-        float: right;
+        bottom: 120%;
+        right: calc(var(--margin) + var(--button-width) - (var(--width) / 2));
+        padding: 1rem;
+        border-radius: 1rem;
+    }
+
+    article{
+        overflow: visible;
+    }
+
+    article > img{
+        border-top-left-radius: 1rem;
+        border-bottom-left-radius: 1rem;
     }
 }
