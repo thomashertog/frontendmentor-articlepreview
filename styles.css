@@ -165,10 +165,6 @@ footer button[aria-expanded="true"]{
         /* margin-block-end: 2rem; */
     }
 
-    footer button[aria-expanded]{
-        place-self: initial;
-    }
-
     .share-links{
         right: 0;
         padding: 2rem;
@@ -193,7 +189,6 @@ footer button[aria-expanded="true"]{
         --width: 22.5ch;
         --margin: 2rem;
         --button-width: 2.5rem;
-        
     }
 
     .share-links{
